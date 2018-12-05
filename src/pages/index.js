@@ -18,7 +18,10 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <Helmet
           htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
+          meta={[
+            { name: 'description', content: siteDescription },
+            { name: 'google-site-verification', content: 'SAlMcBNHPiqa4JT0LQ8DAmm-r8fd3hVQO3JPvJrlPpw'}
+          ]}
           title={siteTitle}
         />
         <Bio />

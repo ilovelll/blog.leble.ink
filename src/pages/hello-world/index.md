@@ -1,10 +1,10 @@
 ---
 title: Hello World
 date: "2018-12-05T08:35:37.569Z"
-spoiler: This is my first post on my new fake blog! How exciting!
+spoiler: 你好呀，我的朋友!
 ---
 
-还有一个月2018年就过去了，这一年想要做的事有很多，没有做的事却更多，心里时常有悔恨之心。
+还有一个月2018年就过去了，这一年想要做的事有很多，没有做的事却更多，心里常有悔恨之心。
 
 最近买了个域名，暂时也没有其他好的用处，就想着重新把博客给弄起来，还起了个新名字： 「夏色如风」 - 名字来源于豆瓣的一篇[影评](https://movie.douban.com/review/5488052/)。
 
