@@ -13,12 +13,13 @@ class Layout extends React.Component {
       header = (
         <h1
           style={{
-            ...scale(1.5),
+            ...scale(1.0),
             marginBottom: rhythm(1.5),
             marginTop: 0,
           }}
         >
           <Link
+            className="web-font"
             style={{
               boxShadow: 'none',
               textDecoration: 'none',
@@ -40,10 +41,11 @@ class Layout extends React.Component {
           }}
         >
           <Link
+            className="web-font"
             style={{
               boxShadow: 'none',
               textDecoration: 'none',
-              color: 'inherit',
+              color: '#ffa7c4',
             }}
             to={'/'}
           >
