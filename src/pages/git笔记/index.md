@@ -112,7 +112,7 @@ st->add->status->commit->e
 1. 如果你是用GitHub作托管服务器的话要先生成SSH KEY，本地仓库和GitHub仓库用SSH加密传输。先到用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Git Bash，创建SSH Key：
 `$ ssh-keygen -t rsa -C "youremail@example.com"`
 然后一路回车，如果顺利的话就可以在用户目录下看见生成的上述文件,SSH Key的秘钥对。
-2. 登陆GitHub，打开设置，在“SSH Keys”页面：点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容。最后点Add Key就好了。上个图：![sshkey](http://ww2.sinaimg.cn/large/5e06b5b0tw1elowz7gcucj20wk0k9gnr.jpg)
+2. 登陆GitHub，打开设置，在“SSH Keys”页面：点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容。最后点Add Key就好了。上个图：![sshkey](https://ww2.sinaimg.cn/large/5e06b5b0tw1elowz7gcucj20wk0k9gnr.jpg)
 
 上面是GitHub的免费仓库，如果你不想别人看见你的代码，可以付费，又或者公司搭建个Git服务器。
 准备工作做完了，就可以进行正式存档和分享喽。
