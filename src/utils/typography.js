@@ -9,16 +9,27 @@ Wordpress2016.overrideThemeStyles = () => ({
     boxShadow: 'none',
   },
 })
-
+const fontFamily = [
+  "Merriweather", 
+  "Georgia", 
+  "Hiragino Sans GB",
+  "Microsoft Yahei",
+  "Helvetica",
+  "Helvetica Neue",
+  "微软雅黑",
+  "Tahoma",
+  "Arial",
+  "sans-serif"
+]
+Wordpress2016.headerFontFamily = fontFamily
+Wordpress2016.bodyFontFamily = fontFamily
 delete Wordpress2016.googleFonts
 
 const typography = new Typography(Wordpress2016)
-
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
   typography.injectStyles()
 }
-
 export default typography
 export const rhythm = typography.rhythm
 export const scale = typography.scale
