@@ -1,9 +1,9 @@
 @font-face {font-family: 'webfont';
-  src: url('//at.alicdn.com/t/webfont_8i3adljzxeb.eot'); /* IE9*/
-  src: url('//at.alicdn.com/t/webfont_8i3adljzxeb.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('//at.alicdn.com/t/webfont_8i3adljzxeb.woff') format('woff'), /* chrome、firefox */
-  url('//at.alicdn.com/t/webfont_8i3adljzxeb.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('//at.alicdn.com/t/webfont_8i3adljzxeb.svg#webfont') format('svg'); /* iOS 4.1- */
+  src: url('webfont.eot'); /* IE9*/
+  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('webfont.woff') format('woff'), /* chrome、firefox */
+  url('webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('webfont.svg#webfont') format('svg'); /* iOS 4.1- */
 }
 .web-font{
   font-family:"webfont" !important;
