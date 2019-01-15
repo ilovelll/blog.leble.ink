@@ -1,10 +1,10 @@
 ---
 title: 使用acme.sh生成通配符域名证书
-date: "2018-12-05T08:26:37.573Z"
-spoiler: "Let's encrypt :lock:"
+date: "2019-01-15T08:27:22.618Z"
+spoiler: "Let's encrypt!🔒"
 ---
 
-[Let's Encrypt](https://letsencrypt.org/) 支持了[通配符域名证书](https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579/)之后，就更没有理由不给自己的站点加上那把锁啦，so let's encrpyt :lock:
+[Let's Encrypt](https://letsencrypt.org/) 支持了[通配符域名证书](https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579/)之后，就更没有理由不给自己的站点加上那把锁啦，so let's encrpyt!🔒。
 
 虽然certbot已经很方便了，但是我们有更方便的[acme.sh](https://acme.sh/)，我的域名是在阿里买的，配合阿里的 DNS API，可以全自动地生成证书，而不用手动添加txt验证。
 
