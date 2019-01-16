@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
 import Bio from '../components/Bio'
+import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm } from '../utils/typography'
@@ -16,13 +17,12 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[
-            { name: 'description', content: siteDescription },
-            { name: 'google-site-verification', content: 'SAlMcBNHPiqa4JT0LQ8DAmm-r8fd3hVQO3JPvJrlPpw'}
-          ]}
-          title={siteTitle}
+        <SEO
+        lang={`zh-cn`}
+        title={siteTitle}
+        description={siteDescription}
+        keywords={[`lihongen`, `夏色如风`, `blog`, `javascript`]}
+        slug={``}
         />
         <Bio />
         {posts.map(({ node }) => {
@@ -34,7 +34,7 @@ class BlogIndex extends React.Component {
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                   {title}
                 </Link>
               </h3>

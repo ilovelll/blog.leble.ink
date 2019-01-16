@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
+import SEO from '../components/SEO'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale } from '../utils/typography'
 
@@ -13,19 +14,19 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteDescription = post.excerpt
     const { previous, next } = this.props.pageContext
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
-          title={`${post.frontmatter.title} | ${siteTitle}`}
+        <SEO
+        lang={`zh-cn`}
+        title={post.frontmatter.title}
+        description={post.frontmatter.spoiler}
+        slug={post.fields.slug}
         />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
             ...scale(-1 / 5),
-            display: 'block',
+            display: `block`,
             marginBottom: rhythm(1),
             marginTop: rhythm(-1),
           }}
@@ -43,10 +44,10 @@ class BlogPostTemplate extends React.Component {
 
         <ul
           style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
             padding: 0,
           }}
         >
@@ -84,12 +85,16 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt
+      excerpt(pruneLength: 160)
       html
       timeToRead
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        spoiler
+      }
+      fields {
+        slug
       }
     }
   }

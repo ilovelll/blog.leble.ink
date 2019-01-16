@@ -4,6 +4,10 @@ module.exports = {
     author: '红恩',
     description: '若登上缓缓长坡，会否见夏色如风',
     siteUrl: 'https://blog.leble.ink',
+    social: {
+      twitter: 'imjonyli',
+      weibo: '0xfff',
+    }
   },
   pathPrefix: '/',
   plugins: [
