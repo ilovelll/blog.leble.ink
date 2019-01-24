@@ -2,6 +2,7 @@
 title: git笔记
 date: "2014-10-27T11:20:03.000Z"
 spoiler: 这个blog是用git管理的，当然少不了git的学习。下面也算是做点笔记吧。
+keywords: ['git', 'note']
 ---
 
 这个blog是用git管理的，当然少不了git的学习。下面也算是做点笔记吧。

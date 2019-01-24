@@ -21,6 +21,7 @@ class BlogPostTemplate extends React.Component {
         title={post.frontmatter.title}
         description={post.frontmatter.spoiler}
         slug={post.fields.slug}
+        keywords={post.frontmatter.keywords || []}
         />
         <h1>{post.frontmatter.title}</h1>
         <p
@@ -92,6 +93,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         spoiler
+        keywords
       }
       fields {
         slug

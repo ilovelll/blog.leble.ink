@@ -2,6 +2,7 @@
 title: 使用acme.sh生成通配符域名证书
 date: "2019-01-15T08:27:22.618Z"
 spoiler: "Let's encrypt!🔒"
+keywords: ['acme.sh', '阿里云', 'https']
 ---
 
 [Let's Encrypt](https://letsencrypt.org/) 支持了[通配符域名证书](https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579/)之后，就更没有理由不给自己的站点加上那把锁啦，so let's encrpyt!🔒。

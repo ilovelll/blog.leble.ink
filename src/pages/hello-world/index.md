@@ -2,6 +2,7 @@
 title: Hello World
 date: "2018-12-05T08:35:37.569Z"
 spoiler: 你好呀，我的朋友!
+keywords: ['hello world', 'leble.ink']
 ---
 
 还有一个月2018年就过去了，这一年想要做的事有很多，没有做的事却更多，心里常有悔恨之意。
