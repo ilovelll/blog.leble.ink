@@ -166,3 +166,18 @@
    float: left;
    min-width: 100%;
  }
+
+ /* for image caption */
+img + br + em {
+    font-style: normal;
+    display: inherit;
+    text-align: center;
+    font-size: 90%;
+}
+/*source code caption */
+.gatsby-highlight + p em {
+    font-style: normal;
+    display: inherit;
+    text-align: center;
+    font-size: 90%;
+}
