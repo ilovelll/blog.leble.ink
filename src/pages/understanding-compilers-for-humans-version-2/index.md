@@ -44,7 +44,7 @@ fn main() {
     println!("{}", output); // 0 1 0 A 0 1 0 3
 }
 ```
-虽然上面这个编译器不读取文件，不生成AST，也不生成二进制文件，但它仍然被认为是编译器，原因很简单，它转换了一个输入输出。
+*虽然上面这个编译器不读取文件，不生成AST，也不生成二进制文件，但它仍然被认为是编译器，原因很简单，它转换了一个输入输出。*
 
 ### 编译器的工作流程
 
@@ -58,5 +58,89 @@ fn main() {
 
 ![step](./step.jpeg)
 
+### 什么是解释器
+[解释器(Interpreter)](https://en.wikipedia.org/wiki/Interpreter_%28computing%29) 很像编译器，因为他们读取一种语言并对其进行处理。但是，**解释器会跳过代码生成并执行[即时编译(JIT)](https://en.wikipedia.org/wiki/Just-in-time_compilation)AST。**解释器的最大优点是在调试期间开始运行程序所需的时间可以变得很小。编译器可能需要花费几秒到几分钟的时间来在执行编译阶段，而解释器可以立即开始执行，而不进行编译。解释器的最大缺点是它需要在执行程序之前安装在用户的计算机上。
+![interpreter](./interpreter.jpeg)
+
+本文主要涉及的是编译器，但也应明确它们之间的差异以及编译器之间的关系，对比上面两图可以看见解释器缺少最后一个步骤：生成二进制执行文件，而直接执行程序。
+
+下面我们来看看编译器的每个阶段
+
+
+## 1. 词法分析(Lexical Analysis)
+
+第一步是按字符分割输入字符。此步骤称为[词法分析(lexical analysis)](https://en.wikipedia.org/wiki/Lexical_analysis)或标记化(tokenization)。主要思想是**将字符组合在一起以形成我们需要的的单词，标识符，符号等。** 词法分析大部分时候不涉及解决例如 `2 + 2` 这样的任何计算逻辑，它只会说我们得到了三个标记：一个数字：`2`、一个加号(`+`)、然后是另一个数字：`2`。
+
+假设你正在分析一个像 `12 + 3` 这样的字符串：它会读取字符`1`，`2`，`+`和`3`。我们有不同的字符，但我们必须将它们组合在一起，这是词法解释器(tokenizer)的主要任务之一。例如，我们将`1`和`2`作为单个字母，但我们需要将它们放在一起并将它们解析为单个整数。`+`也需要被识别为加号，而不是其文字字符值-[ASCII码](http://www.asciitable.com/)`43`。
+
+![lexical](./lexical.jpeg)
+
+如果您可以查看下面链接代码则能帮助理解更具意义，代码中Rust tokenizer可以将数字分组为32位整数，并将加号作为枚举类型`Token`的值`Plus`。  
+[Rust tokenizer](https://play.rust-lang.org/?gist=070c3b6b985098a306c62881d7f2f82c&version=stable&mode=debug&edition=2015)  
+*您可以单击Rust Playground左上角的“运行”按钮，在浏览器中编译并执行代码。*
+附代码: 
+```rust
+#[derive(Debug)]
+enum Token {
+    Number(i32),
+    Plus,
+}
+
+fn tokenize(input: &str) -> Vec<Token> {
+    let mut tokens: Vec<Token> = Vec::new();
+    let chars = input.chars().collect::<Vec<char>>();
+
+    let mut i: usize = 0;
+    while i < chars.len() {
+        match chars[i] {
+            '+' => tokens.push(Token::Plus),
+            c => {
+                if c.is_digit(10) {
+                    // if c is a digit in base 10
+                    let mut number_string: String = c.to_string();
+                    i += 1; // consume c
+
+                    while i < chars.len() && chars[i].is_digit(10) {
+                        number_string.push(chars[i]);
+                        i += 1;
+                    }
+
+                    let number: i32 = number_string.parse().expect("invalid number");
+                    tokens.push(Token::Number(number));
+
+                    // Since we `i += 1` at end of the last loop, we have to skip over
+                    // the following i += 1 at the end of the current while loop.
+                    continue;
+                }
+            }
+        }
+        i += 1;
+    }
+
+    tokens
+}
+
+fn main() {
+    let input = "12+3";
+    println!("input: {:?}", input); // Print literal value of `input`
+    println!("{:?}", tokenize(input)); // Print tokenized `input`
+}
+```
+在编程语言的编译器中，词法分析器可能需要具有几种不同类型的token。例如：符号(symbols)，数字(numbers)，标识符(identifiers)，字符串(strings)，运算符(operators)，等等。它完全依赖于语言本身来了解您需要从源代码中提取哪种类型的token。  
+
+
+```c
+int main() {
+    int a;
+    int b;
+    a = b = 4;
+    return a - b;
+}
+
+Scanner production:
+[Keyword(Int), Id("main"), Symbol(LParen), Symbol(RParen), Symbol(LBrace), Keyword(Int), Id("a"), Symbol(Semicolon), Keyword(Int), Id("b"), Symbol(Semicolon), Id("a"), Operator(Assignment), Id("b"),
+Operator(Assignment), Integer(4), Symbol(Semicolon), Keyword(Return), Id("a"), Operator(Minus), Id("b"), Symbol(Semicolon), Symbol(RBrace)]
+```
+*已经过词法分析的C源代码示例，其代码已打印出来。*
 
 ****未完待续***
