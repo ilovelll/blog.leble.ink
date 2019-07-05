@@ -181,3 +181,9 @@ img + br + em {
     text-align: center;
     font-size: 90%;
 }
+.gatsby-resp-image-link + em {
+    font-style: normal;
+    display: inherit;
+    text-align: center;
+    font-size: 90%;
+}
